@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from . models import usermodel
 from . forms import userforms
@@ -23,5 +23,19 @@ def index(request):
     return render(request,'index.html',{'db':db_data, 'form':form})
 
 
+def update(request,id):
+    fetch=usermodel.objects.get(id=id)
+    
+    form = userforms(request.POST or None, instance=fetch)
+    if form.is_valid():
+        form.save()
+        return redirect('index')
+    
+    return render(request,'update.html',{'fm':form})
+
+def delete(request,id):
+    fetch=usermodel.objects.get(id=id)
+    fetch.delete()
+    return redirect('index')
 
 

@@ -23,6 +23,8 @@
             <td>{{item.name}}</td>
             <td>{{item.last}}</td>
             <td>{{item.email}}</td>
+            <td><a href="update/{{item.id}}"> edit</a></td>
+            <td><a href="delete/{{item.id}}"> delete</a></td>
         </tr>
     {%endfor%}
     </table>

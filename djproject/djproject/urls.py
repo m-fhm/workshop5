@@ -22,6 +22,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('update/<id>', views.update),
     path('delete/<id>', views.delete),
+    path('getapi', views.get),
+    path('postapi', views.post),
 
 
 ]
